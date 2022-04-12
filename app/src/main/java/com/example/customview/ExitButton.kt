@@ -7,14 +7,23 @@ import android.content.DialogInterface
 import android.util.AttributeSet
 import android.view.View
 import android.widget.Button
+import android.widget.Toast
 
 @SuppressLint("AppCompatCustomView")
 class ExitButton(context: Context,attributeSet: AttributeSet?=null) : Button(context,attributeSet) {
+    var exitables=true
     //guaranteed to execute after primary const
     init {
+
         setOnClickListener {
+            if (exitables){
             var exitAlertDialog:AlertDialog=getAlertDialog()
             exitAlertDialog.show()
+            }
+            else
+            {
+                Toast.makeText(context,"Operation going on,Can't exit",Toast.LENGTH_SHORT).show()
+            }
 
         }
 
